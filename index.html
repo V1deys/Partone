@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Part 1</title>
+<title>Video Viral</title>
 
 <style>
 body {
@@ -17,7 +17,12 @@ body {
 .container {
     max-width:500px;
     margin:auto;
-    padding:20px;
+    padding:15px;
+}
+
+.video-box {
+    position:relative;
+    cursor:pointer;
 }
 
 video {
@@ -25,6 +30,38 @@ video {
     border-radius:12px;
 }
 
+/* tombol play */
+.play-btn {
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    font-size:60px;
+    background:rgba(0,0,0,0.6);
+    padding:20px 30px;
+    border-radius:50%;
+    animation:pulse 1.5s infinite;
+}
+
+/* durasi video */
+.duration {
+    position:absolute;
+    bottom:10px;
+    right:10px;
+    background:rgba(0,0,0,0.7);
+    padding:3px 8px;
+    font-size:12px;
+    border-radius:5px;
+}
+
+/* animasi */
+@keyframes pulse {
+    0% {transform:translate(-50%, -50%) scale(1);}
+    50% {transform:translate(-50%, -50%) scale(1.1);}
+    100% {transform:translate(-50%, -50%) scale(1);}
+}
+
+/* tombol lanjut */
 .btn {
     margin-top:15px;
     padding:15px;
@@ -34,6 +71,7 @@ video {
     border-radius:10px;
     text-decoration:none;
     display:none;
+    font-weight:bold;
 }
 </style>
 </head>
@@ -41,34 +79,44 @@ video {
 <body>
 
 <div class="container">
-<h3>🔥 Part 1 - Jangan Diskip 🔥</h3>
 
-<video id="vid1" onclick="playVideo()">
-    <source src="yoshitaka Nene.mp4" type="video/mp4">
-</video>
+<h3>🔥 yoshitaka Nene 💯🔥</h3>
+<p>Klik untuk memutar ▶</p>
 
-<a href="page2.html" class="btn" id="nextBtn" onclick="ad1()">LANJUT KE PART 2</a>
+<div class="video-box" onclick="playVideo()">
+    <video id="vid1">
+        <source src="yoshitaka Nene.mp4" type="video/mp4">
+    </video>
+
+    <div class="play-btn" id="playBtn">▶</div>
+    <div class="duration">00:59</div>
+</div>
+
+<a href="page2.html" class="btn" id="nextBtn" onclick="openAd()">LANJUT KE PART 2</a>
+
 </div>
 
 <script>
-let klik1 = false;
+let clicked = false;
 
 function playVideo() {
     let v = document.getElementById("vid1");
+    let btn = document.getElementById("playBtn");
 
-    if (!klik1) {
+    if (!clicked) {
         window.open("https://injusticebakery.com/ky2ke53zw?key=f6a8bd8c5fa5e272c54364f2b859de84", "_blank");
-        klik1 = true;
+        clicked = true;
     }
 
     v.play();
+    btn.style.display = "none";
 
     setTimeout(() => {
         document.getElementById("nextBtn").style.display = "block";
     }, 5000);
 }
 
-function ad1() {
+function openAd() {
     window.open("https://injusticebakery.com/ky2ke53zw?key=f6a8bd8c5fa5e272c54364f2b859de84", "_blank");
 }
 </script>
